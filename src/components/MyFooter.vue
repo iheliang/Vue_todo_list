@@ -14,7 +14,7 @@
 <script>
 export default {
   name: "MyFooter",
-  props: ["todos", "checkAllTodo", "clearAllTodo"],
+  props: ["todos"], //["checkAllTodo", "clearAllTodo"]
   computed: {
     //统计事项的总数
     total() {
@@ -32,14 +32,16 @@ export default {
       },
       //如检测到改变了底部勾选框则调用App的checkAllTodo函数
       set(value) {
-        this.checkAllTodo(value);
+        //this.ckeckAllTodo(value)
+        this.$emit("checkAllTodo", value);
       },
     },
   },
   methods: {
     //底部删除按钮被点击则调用该函数
     clearAll() {
-      this.clearAllTodo();
+      // this.clearAllTodo();
+      this.$emit("clearAllTodo");
     },
   },
 };

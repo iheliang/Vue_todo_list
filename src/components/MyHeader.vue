@@ -14,10 +14,9 @@ import { nanoid } from "nanoid";
 export default {
   name: "MyHeader",
   computeds: { nanoid },
-  props: ["addTodo"],
   data() {
     return {
-      title: "",
+      title: "", //收集用户输入的title
     };
   },
   methods: {
@@ -26,7 +25,7 @@ export default {
       if (!this.title.trim()) return alert("输入的内容不能为空");
       // console.log(e.target.value);
       const todoObj = { id: nanoid(), title: this.title, done: false };
-      this.addTodo(todoObj);
+      this.$emit("addTodo", todoObj);
       this.title = "";
     },
   },
