@@ -59,12 +59,16 @@ export default {
   },
   data() {
     return {
-      todos: [
-        { id: "001", title: "抽烟", done: true },
-        { id: "002", title: "喝酒", done: false },
-        { id: "003", title: "烫头", done: true },
-      ],
+      todos: JSON.parse(localStorage.getItem("todos")) || [],
     };
+  },
+  watch: {
+    todos: {
+      deep: true,
+      handler(value) {
+        localStorage.setItem("todos", JSON.stringify(value));
+      },
+    },
   },
 };
 </script>
@@ -115,12 +119,3 @@ body {
 }
 </style>
 
-# 
-# 我现在模拟一个修改或者新功能的开发
-# 开发到一个阶段后我想提交当前的版本
-# 看到了吗，这里会实时跟踪你那个文件做了修改，你点进去看就会看到修改了什么
-# 绿色的部分就是添加的，红色就是删除的。
-# 有个加号+ ，点击这个加号相当于命令 git add App.vue
-# 暂存之后，下一步就是git commit -m “这是一个测试提交”  
-# 点击“提交”后就相当于执行了 git commit -m “这是一个测试提交”  
-# master

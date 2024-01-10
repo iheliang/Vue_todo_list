@@ -16,7 +16,7 @@ export default {
   name: "MyFooter",
   props: ["todos", "checkAllTodo", "clearAllTodo"],
   computed: {
-    //统计事项总数
+    //统计事项的总数
     total() {
       return this.todos.length;
     },

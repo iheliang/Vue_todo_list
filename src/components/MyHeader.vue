@@ -25,7 +25,7 @@ export default {
     add() {
       if (!this.title.trim()) return alert("输入的内容不能为空");
       // console.log(e.target.value);
-      const todoObj = { id: nanoid(), title: this.title, demo: false };
+      const todoObj = { id: nanoid(), title: this.title, done: false };
       this.addTodo(todoObj);
       this.title = "";
     },
