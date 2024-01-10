@@ -15,17 +15,17 @@
 <script>
 export default {
   name: "MyItem",
-  props: ["todo", "checkTodo", "deleteTodo"],
+  props: ["todo"],
   methods: {
     //修改事项的勾选状态
     handleCheck(id) {
       // console.log(id);
-      this.checkTodo(id);
+      this.$bus.$emit("checkTodo", id);
     },
     //删除先获取到删除事件的id，再调用App里面的deleteTodo函数将事项id传入
     delTodo(id) {
       if (confirm("确定删除吗？")) {
-        this.deleteTodo(id);
+        this.$bus.$emit("deleteTodo", id);
       }
     },
   },
