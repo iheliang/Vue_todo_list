@@ -52,6 +52,13 @@ export default {
         return !todo.done;
       });
     },
+    updateTodo(id, title) {
+      this.todos.forEach((todo) => {
+        if (todo.id === id) {
+          todo.title = title;
+        }
+      });
+    },
   },
   data() {
     return {
@@ -69,9 +76,11 @@ export default {
   mounted() {
     this.$bus.$on("checkTodo", this.checkTodo),
       this.$bus.$on("deleteTodo", this.deleteTodo);
+    this.$bus.$on("updateTodo", this.updateTodo);
   },
   beforeCreate() {
     this.$bus.$off("checkTodo");
+    this.$bus.$off("updateTodo");
     this.$bus.$off("deleteTodo");
   },
 };
@@ -101,6 +110,13 @@ body {
   color: #fff;
   background-color: #da4f49;
   border: 1px solid #bd362f;
+}
+
+.btn-edit {
+  color: #fff;
+  background-color: skyblue;
+  border: 1px solid rgb(103, 159, 180);
+  margin-right: 5px;
 }
 
 .btn-danger:hover {
