@@ -108,4 +108,21 @@ li:hover {
 li:hover button {
   display: block;
 }
+
+.todo-enter-active {
+  animation: atguigu 0.5s linear;
+}
+
+.todo-leave-active {
+  animation: atguigu 0.5s linear reverse;
+}
+
+@keyframes atguigu {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
 </style>
